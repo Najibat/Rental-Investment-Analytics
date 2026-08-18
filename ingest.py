@@ -57,7 +57,7 @@ def fetch_and_save_csv(s3_client, candidate_keys, output_path, month_label):
             df['_snapshot_month'] = month_label
             df['_ingested_at'] = datetime.now(timezone.utc).isoformat()
             df['_source_file'] = f"s3://{S3_BUCKET_NAME}/{key}"
-            df['ingestion_month'] ='january'
+            df['ingestion_month'] = month_label
             
             # Ensure local output directory exists
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
